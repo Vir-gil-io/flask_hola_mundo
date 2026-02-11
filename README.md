@@ -10,3 +10,4 @@ A continuaci√≥n se explica detalladamente el funcionamiento de cada parte del c√
 from flask import Flask, render_template, request
 import requests
 ```
+### from flask import Flask, render_template, request
