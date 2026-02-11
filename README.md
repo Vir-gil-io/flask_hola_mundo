@@ -43,4 +43,31 @@ Se importa la librería externa requests, que se utiliza para realizar peticione
 
 ## 🚀 Creación de la aplicación Flask
 
+```python
+app = Flask(__name__)
+```
+- Se crea una instancia de la clase Flask, la cual representa la aplicación web.
+- **__name__** es una variable especial de Python que contiene el nombre del módulo actual.
+- Flask utiliza este valor para:
+  - Determinar la ruta base del proyecto.
+  - Localizar las carpetas **templates** y **static**
+
+En resumen, esta línea inicializa la aplicación y la deja lista para definir rutas y manejar solicitudes.
+
+---
+
+## 🛣️ Definición de la ruta principal
+
+```python
+@app.route('/', methods=['GET', 'POST'])
+def buscar():
+```
+- **@app.route('/')** define la ruta principal de la aplicación (la raíz del sitio).
+- **methods=['GET', 'POST']** indica que esta ruta acepta:
+  - **GET:** cuando el usuario accede a la página por primera vez.
+  - **POST:** cuando el usuario envía el formulario de búsqueda.
+
+La función **buscar()** se ejecuta cada vez que se accede a esta ruta.
+
+
 
