@@ -14,6 +14,15 @@ import requests
 
 Esta línea importa componentes esenciales del framework Flask:
 
-- Flask:
+- **Flask:**
 Es la clase principal del framework. Se utiliza para crear la instancia de la aplicación web.
 A partir de este objeto se definen rutas, se manejan peticiones HTTP y se ejecuta el servidor.
+
+- **render_template:**
+Función que permite renderizar archivos HTML ubicados en la carpeta templates.
+Utiliza el motor de plantillas Jinja2, lo que permite insertar variables y lógica desde Python dentro del HTML.
+
+- **request:**
+Es un objeto especial de Flask que permite acceder a la información de las peticiones HTTP entrantes, como:
+-- Datos enviados desde formularios
+-- 
