@@ -30,3 +30,17 @@ Es un objeto especial de Flask que permite acceder a la información de las peti
   - Parámetros de la URL.
   - Cabeceras HTTP.
 
+**import requests**
+
+Se importa la librería externa requests, que se utiliza para realizar peticiones HTTP salientes desde Python hacia servicios externos.
+
+📌 Es importante no confundir:
+
+- **request** (Flask): maneja peticiones que llegan al servidor.
+- **requests** (librería): se usa para enviar peticiones a otras APIs (en este caso, Nominatim).
+
+---
+
+## 🚀 Creación de la aplicación Flask
+
+
