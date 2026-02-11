@@ -10,4 +10,5 @@ A continuación se explica detalladamente el funcionamiento de cada parte del c�
 from flask import Flask, render_template, request
 import requests
 ```
-### from flask import Flask, render_template, request
+**from flask import Flask, render_template, request**
+Esta línea importa componentes esenciales del framework Flask:
