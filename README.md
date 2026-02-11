@@ -11,4 +11,9 @@ from flask import Flask, render_template, request
 import requests
 ```
 **from flask import Flask, render_template, request**
+
 Esta línea importa componentes esenciales del framework Flask:
+
+- Flask:
+Es la clase principal del framework. Se utiliza para crear la instancia de la aplicación web.
+A partir de este objeto se definen rutas, se manejan peticiones HTTP y se ejecuta el servidor.
