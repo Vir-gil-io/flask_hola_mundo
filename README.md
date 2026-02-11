@@ -25,4 +25,8 @@ Utiliza el motor de plantillas Jinja2, lo que permite insertar variables y lógi
 - **request:**
 Es un objeto especial de Flask que permite acceder a la información de las peticiones HTTP entrantes, como:
 -- Datos enviados desde formularios
--- 
+  - Datos enviados desde formularios.
+  - Método de la petición (GET o POST).
+  - Parámetros de la URL.
+  - Cabeceras HTTP.
+
