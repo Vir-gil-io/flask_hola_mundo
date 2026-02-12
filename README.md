@@ -204,3 +204,18 @@ Este proyecto demuestra cómo Flask:
 - Renderiza vistas dinámicas con HTML
 
 Además, integra buenas prácticas como el uso de cabeceras HTTP, control de errores y separación entre lógica de negocio y presentación.
+
+---
+
+## 🖼️ Capturas de pantalla
+
+A continuación se muestran las vistas del proyecto:
+
+### Barra de buscador
+![Buscador](./static/screenshots/buscador.png)
+
+### Muestra de sugerencias de búsqueda
+![Sugerencias](./static/screenshots/sugerencias.png)
+
+### Muestra de resultados de búsqueda
+![Resultados](./static/screenshots/resultados.png)
