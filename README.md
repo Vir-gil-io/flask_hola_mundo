@@ -69,5 +69,138 @@ def buscar():
 
 La función **buscar()** se ejecuta cada vez que se accede a esta ruta.
 
+## 🧠 Inicialización de variables
 
+```python
+lugares = []
+error = False
+query = ""
+```
 
+- **lugares:** Lista que almacenará los resultados devueltos por la API (latitud, longitud y nombre del lugar).
+- **error:** Bandera booleana que indica si la búsqueda no arrojó resultados. Se utiliza para mostrar mensajes de error en la interfaz.
+- **query:** Guarda el texto ingresado por el usuario en el formulario de búsqueda.
+
+---
+
+## 📩 Manejo de la petición POST
+
+```python
+if request.method == 'POST':
+    query = request.form['lugar']
+```
+- Se verifica si la petición es de tipo **POST**.
+- **request.form['lugar']** obtiene el valor del campo **name="lugar"** del formulario HTML.
+- Este valor representa el texto que el usuario desea buscar.
+
+---
+
+## 🌐 Consumo de la API Nominatim (OpenStreetMap)
+
+```python
+url = "https://nominatim.openstreetmap.org/search"
+params = {
+    'q': query,
+    'format': 'json',
+    'limit': 5
+}
+```
+- **url:** endpoint de la API Nominatim para búsquedas geográficas.
+- **params:**
+  - **q:** término de búsqueda ingresado por el usuario.
+  - **format:** formato de respuesta (JSON).
+  - **limit:** número máximo de resultados a devolver.
+ 
+---
+
+## Cabeceras HTTP
+
+```python
+headers = {
+    "User-Agent": "Flask-Educational-App"
+}
+```
+- Nominatim exige que las peticiones incluyan un **User-Agent** identificable.
+- Esto evita bloqueos y cumple con las políticas de uso de la API.
+
+---
+
+## Envío de la petición
+
+```python
+response = requests.get(url, params=params, headers=headers, timeout=5)
+data = response.json()
+```
+- Se realiza una petición HTTP GET hacia la API.
+- **timeout=5:** evita que la aplicación quede esperando indefinidamente.
+- **response.json():** convierte la respuesta en una estructura de datos Python (lista de diccionarios).
+
+---
+
+## 📍 Procesamiento de resultados
+
+```python
+if data:
+    for item in data:
+        lugares.append({
+            'lat': item['lat'],
+            'lon': item['lon'],
+            'nombre': item['display_name']
+        })
+else:
+    error = True
+```
+- Si la API devuelve resultados:
+  - Se recorre cada elemento y se extraen:
+    - Latitud
+    - Longitud
+    - Nombre completo del lugar
+  - Estos datos se almacenan en la lista **lugares**.
+- Si no hay resultados:
+  - Se activa la bandera **error** para notificar al usuario.
+
+---
+
+## 🖼️ Renderizado de la vista
+
+```python
+return render_template(
+    'map.html',
+    lugares=lugares,
+    error=error,
+    query=query
+)
+```
+- Se renderiza el archivo **map.html**.
+- Se envían variables al template:
+  - **lugares:** lista de ubicaciones encontradas.
+  - **error:** indica si ocurrió un error en la búsqueda.
+  - **query:** texto buscado por el usuario.
+
+Estas variables pueden utilizarse directamente en el HTML mediante Jinja2.
+
+---
+
+## ▶️ Ejecución de la aplicación
+
+```python
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+- Esta condición asegura que el servidor solo se ejecute cuando el archivo se ejecute directamente
+- **debug=True:**
+  - Muestra errores detallados en el navegador.
+  - Recarga automáticamente la aplicación al detectar cambios en el código.
+
+---
+
+## 🧾 Conclusión
+
+Este proyecto demuestra cómo Flask:
+- Maneja rutas y peticiones HTTP
+- Recibe datos de formularios
+- Consume APIs externas
+- Procesa datos en Python
+- Renderiza vistas dinámicas con HTML
+
+Además, integra buenas prácticas como el uso de cabeceras HTTP, control de errores y separación entre lógica de negocio y presentación.
